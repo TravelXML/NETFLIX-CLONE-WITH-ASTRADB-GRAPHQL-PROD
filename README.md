@@ -1,18 +1,26 @@
 <!--- STARTEXCLUDE --->
-# 🎓 Netflix Clone using Astra DB and GraphQL
+# Netflix Clone using Astra DB and GraphQL 
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
-[![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
+![image](https://github.com/TravelXML/NETFLIX-CLONE-WITH-ASTRADB-GRAPHQL/blob/main/tutorial/images/NETFLIX-CLONE-WITH-ASTRADB-GRAPHQL.png)
 
-*1 Hour, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)[![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
+
+
+# Create Netflix Clone in 1 Hour
+[Let's Start Building](#1-login-or-register-to-astradb-and-create-database)
+
+## Technology Stack ##
+
+* Node
+* GraphQL
+* Cassandra - Astra DB
 
 
 <!--- ENDEXCLUDE --->
 
 See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 
-![image](./img/ui.png)
 
 ## 🎯 Objectives
 * Deploy a Netflix clone to production
@@ -20,11 +28,11 @@ See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 * Learn about **paging** and **infinite scrolling** in web ui
 * Leverage Netlify and Astra DB
 
-## ℹ️ Frequently asked questions ℹ️ 
+## ℹ️ Frequently asked questions ℹ️
 
-- *Can I run the workshop on my computer?*
+- *Can I run this Project on my computer?*
 
-> There is nothing preventing you from running the workshop on your own machine.
+> There is nothing preventing you from running the project on your own machine.
 > If you do so, you will need
 > * git installed on your local system
 > * [node 15 and npm 7 or later](https://www.whitesourcesoftware.com/free-developer-tools/blog/update-node-js/)
@@ -34,17 +42,7 @@ See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 - *What other prerequisites are there?*
 > * You will need a github account
 > * You will also need Netlify and Astra DB accounts, but we'll work through that in the exercises
-> * Use **Chrome** or **Firefox** for the best experience. Other browsers are great, but don't work well with the GitPod integration we use a bit later.
-
-- *Do I need to pay for anything for this workshop?*
-> * **No.** All tools and services we provide here are FREE.
-
-- *Will I get a certificate if I attend this workshop?*
-
-> Attending the session is not enough. You need to complete the homeworks detailed below and you will get a nice badge.
-
-  
-# Let's start
+> * Use <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome or <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox for the best experience. Other browsers are great, but don't work well with the GitPod integration we use a bit later.
 
 ## Table of contents
 
@@ -83,8 +81,9 @@ _Make sure to chose a password with minimum 8 characters, containing upper and l
 
 <a href="https://astra.dev/12-3"><img src="img/create_astra_db.png?raw=true" /></a>
 - <details><summary>Show me!</summary>
-    <img src="https://github.com/datastaxdevs/workshop-spring-stargate/raw/main/images/tutorials/astra-create-db.gif?raw=true" />
+    <img src="https://github.com/TravelXML/NETFLIX-CLONE-WITH-ASTRADB-GRAPHQL/blob/main/tutorial/images/astra-create-db.gif" />
 </details>
+
 
 **Use the following values when creating the database**
 |Field| Value|
@@ -119,13 +118,13 @@ The status will change to `Active` when the database is ready, this will only ta
 
 ## 3. Create table **genre** with GraphQL
 
-✅  **Step 3a:** Open **GraphQL Playground** by 
+✅  **Step 3a:** Open **GraphQL Playground** by
 1. Click on your active database
 2. Click `Connect` TAB
 3. Click `GRAPHQL API`
-4. Click link to your playground.
+4. Click the link to your playground.
 
-*As show on the picture below.*
+*As shown in the picture below.*
 ![image](img/open-playground.png?raw=true)
 
 > *Note that values in the picture do no reflect the database name `workshops`, reason is we do not reproduce every picture each time*
@@ -143,7 +142,7 @@ mutation {
     keyspaceName:"netflix",
     tableName:"reference_list",
     ifNotExists:true
-    partitionKeys: [ 
+    partitionKeys: [
       { name: "label", type: {basic: TEXT} }
     ]
     clusteringKeys: [
@@ -160,7 +159,7 @@ mutation {
 
 ## 4. Insert data in the Table with GraphQL
 
-✅  **Step 4a:** In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
+✅  **Step 4a:** In the graphQL playground, change the tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
 
 ✅  **Step 4b:** Populate **HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below (again !! yes this is not the same tab)
 
@@ -216,25 +215,25 @@ mutation insertGenres {
   }
   thriller: insertreference_list(value: {label:"genre", value:"Thriller"}) {
      value{value}
-  } 
+  }
   realitytv: insertreference_list(value: {label:"genre", value:"Reality TV"}) {
      value{value}
-  } 
+  }
   tvshow: insertreference_list(value: {label:"genre", value:"TV Show"}) {
      value{value}
-  } 
+  }
   musicmusicals: insertreference_list(value: {label:"genre", value:"Music & Musicals"}) {
      value{value}
-  } 
+  }
   classic: insertreference_list(value: {label:"genre", value:"Classic"}) {
      value{value}
-  } 
+  }
   international: insertreference_list(value: {label:"genre", value:"International"}) {
      value{value}
-  } 
+  }
   crime: insertreference_list(value: {label:"genre", value:"Crime"}) {
      value{value}
-  } 
+  }
   cult: insertreference_list(value: {label:"genre", value:"Cult"}) {
      value{value}
   }  
@@ -253,7 +252,7 @@ mutation insertGenres {
 query getAllGenre {
     reference_list (value: {label:"genre"}) {
       values {
-      	value
+          value
       }
     }
 }
@@ -278,7 +277,7 @@ mutation {
     partitionKeys: [
       { name: "genre", type: {basic: TEXT} }
     ]
-    clusteringKeys: [ 
+    clusteringKeys: [
       { name: "year", type: {basic: INT}, order: "DESC" },
       { name: "title", type: {basic: TEXT}, order: "ASC" }
     ]
@@ -298,13 +297,13 @@ mutation {
 
 ## 7. Insert Values in Movie table
 
-✅  **Step 7a:** Move to tab `GRAPHQL`, everything should be set, use the following mutation to populate movies table: 
+✅  **Step 7a:** Move to tab `GRAPHQL`, everything should be set, use the following mutation to populate movies table:
 
 ```yaml
 mutation insertMovies {
   inception: insertmovies_by_genre(
-    value: { 
-      genre:"Sci-Fi", 
+    value: {
+      genre:"Sci-Fi",
       year:2010,
       title:"Inception",
       synopsis:"Cobb steals information from his targets by entering their dreams.",
@@ -312,9 +311,9 @@ mutation insertMovies {
       thumbnail:"https://i.imgur.com/RPa4UdO.mp4"}) {
     value{title}
     }
-  
-  prometheus: insertmovies_by_genre(value: { 
-      genre:"Sci-Fi", 
+ 
+  prometheus: insertmovies_by_genre(value: {
+      genre:"Sci-Fi",
       year:2012,
       title:"Prometheus",
       synopsis:"After a clue to mankind's origins is discovered, explorers are sent to the darkest corner of the universe.",
@@ -322,9 +321,9 @@ mutation insertMovies {
       thumbnail:"https://i.imgur.com/L8k6Bau.mp4"}) {
     value{title}
     }
-  
-  	aliens: insertmovies_by_genre(value: { 
-      genre:"Sci-Fi", 
+ 
+      aliens: insertmovies_by_genre(value: {
+      genre:"Sci-Fi",
       year:1986,
       title:"Aliens",
       synopsis:"Ellen Ripley is sent back to the planet LV-426 to establish contact with a terraforming colony.",
@@ -332,9 +331,9 @@ mutation insertMovies {
       thumbnail:"https://i.imgur.com/QvkrnyZ.mp4"}) {
     value{title}
     }
-  
-    bladeRunner: insertmovies_by_genre(value: { 
-      genre:"Sci-Fi", 
+ 
+    bladeRunner: insertmovies_by_genre(value: {
+      genre:"Sci-Fi",
       year:1982,
       title:"Blade Runner",
       synopsis:"Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard.",
@@ -434,7 +433,7 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 > *If the file opens in the browser save it with the name `movies_by_genre.csv`. This is important as the filename will be the table name.*
 
 <p align="left">
-<a href="https://raw.githubusercontent.com/datastaxdevs/appdev-week3-graphql/main/data/movies_by_genre.csv">
+<a href="https://raw.githubusercontent.com/TravelXML/NETFLIX-CLONE-WITH-ASTRADB-GRAPHQL/main/tutorial/images/movies_by_genre.csv?raw=true">
  <img src="https://dabuttonfactory.com/button.png?t=Download Dataset&f=Roboto-Bold&ts=20&tc=fff&hp=20&vp=15&c=11&bgt=unicolored&bgc=15d798" />
 </a>
 </p>
@@ -488,7 +487,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 ![image](tutorial/images/import-movies-6.png?raw=true)
 
-**Congratulations the Database is SET !!!**
+**Congratulations, the Database is SET !!!**
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
@@ -499,7 +498,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 * _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-graphql-netflix)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TravelXML/NETFLIX-CLONE-WITH-ASTRADB-GRAPHQL)
 
    
 ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize._
@@ -603,7 +602,7 @@ query {
 
 ## 3. Fetching from the Front-End
 
-Let's take a look at how we fetch from these serverless functions from the front-end. Start in `src/App.js`
+Let's take a look at how we fetch these serverless functions from the front-end. Start in `src/App.js`
 
 We have a fetch method defined that will retrieve a page of genres by calling the `getGenres` serverless function.
 
@@ -623,7 +622,7 @@ const fetchData = async () => {
 }
 ```
 
-We pass in the current `pageState` and `pageSize` state variables and recieve a response from the serverless function. We then set the `pageState` var to the new pagestate, and set the `genres` state variable to the recieved data. (Note that we are concatenating the new data to the var, since we want to keep all previously fetched data, not replace).
+We pass in the current `pageState` and `pageSize` state variables and receive a response from the serverless function. We then set the `pageState` var to the new pagestate, and set the `genres` state variable to the received data. (Note that we are concatenating the new data to the var, since we want to keep all previously fetched data, not replace).
 
 When we render the page, generate a `<Section>` component for each genre, and set a `<div>` to detect a mouseEnter to load the next page of genres.
 
@@ -702,7 +701,7 @@ npm install
 ```
 
 ## 7. Launch your app
-  * Run the application 
+  * Run the application
   ```
   netlify dev
   ```
@@ -737,7 +736,7 @@ This will take a few minutes.
     <img src="tutorial/images/netlify-connect-01.png" />
     </details>
 
-  * Click on `Site deploy in progress` within the Netlify UI, 
+  * Click on `Site deploy in progress` within the Netlify UI,
     <details>
     <summary>Show me! </summary>
     <img src="tutorial/images/deploy-1.png" />
@@ -778,7 +777,7 @@ Use this link to open Gitpod from **YOUR** repository!
 
 Execute each of the commands below to link your code to your Netlify deployment.
 
-✅ **Step 4a:**  we'll need to **STOP** the `netlify dev` command if you still have it running. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
+✅ **Step 4a:**  we'll need to **STOP** the `netlify dev` command if you still have it running. In the terminal where you executed the netlify command, issue a `CTRL+C` (control key + the C key) in order to stop the process.
 
 ✅ **Step 4b:** Enter the following command to pop up a browser to authenticate with netlify
 
@@ -802,7 +801,7 @@ Opening https://app.netlify.com/authorize?....
 You are now logged into your Netlify account!
 Run netlify status for account details
 To see all available commands run: netlify help
-gitpod /workspace/appdev-week3-graphql $ 
+gitpod /workspace/appdev-week3-graphql $
 ```
 
 ✅ **Step 4d:** link your workspace to the associated site with the following command
@@ -816,7 +815,7 @@ netlify link
 ![image](tutorial/images/netlify-link.png?raw=true)
 
 ✅ **Step 4e:** take the .env file upload it to netlify
-  
+ 
   ```
   netlify env:import .env
   ```
@@ -845,10 +844,10 @@ Now that you've hooked everything up, time to deploy to production.
   ```
   netlify open:site
   ```
-  
+ 
   You've deployed your app to Netlify!
   ![Netlify Setup Example](./tutorial/images/prodDeploy.png?raw=true)
-  
+ 
   Finally open [https://serverlessnetflixclone.netlify.app/](https://serverlessnetflixclone.netlify.app/)
-  
+ 
   Enjoy Coding!
